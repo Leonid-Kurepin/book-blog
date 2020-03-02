@@ -34,10 +34,18 @@ namespace BooksBlogRazor.Pages.BookReviews
                 return Page();
             }
 
+            // Set default image
+            if (string.IsNullOrEmpty(BookReview.Image))
+            {
+                BookReview.Image = "https://knigopoisk.org/media/books/po/poster.png";
+            }
+
+            BookReview.ReviewDateCreated = DateTime.Today;
+
             _context.BookReviews.Add(BookReview);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Reviews");
         }
     }
 }

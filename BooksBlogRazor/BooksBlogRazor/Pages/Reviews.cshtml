@@ -1,8 +1,158 @@
 ﻿@page
 @model BooksBlogRazor.Pages.ReviewsModel
+@using Microsoft.AspNetCore.Antiforgery
+@inject IAntiforgery AntiForgery;
+
 @{
-    ViewData["Title"] = "Reviews";
+    ViewData["Title"] = "Рецензии";
 }
 
-<h1>Reviews</h1>
+<h1>Мои Рецензии</h1>
+
+@Html.Hidden("dateCreatedFilter", "Month")
+@Html.Hidden("searchWord", "")
+
+<div class="row" style="padding: 0 20px 20px 20px">
+    <div class="col-md-2" style="visibility: hidden">
+        Поиск по названию:
+    </div>
+
+    <input type="text" name="enter" class="enter" value="" id="searchWordString" />
+    <button  onclick="searchByTitle()">Поиск</button>
+</div>
+
+<div class="row" style="padding: 20px 20px 10px 20px">
+    <div class="col-md-2">
+        По дате добавления:
+    </div>
+
+    <label class="col-md-2 radio-inline"><input type="radio" name="RadioDateCreatedFilter" onchange="filterByDateCreatedRadioButtonChange('Month')" checked> За последний месяц</label>
+    <label class="col-md-2 radio-inline"><input type="radio" name="RadioDateCreatedFilter" onchange="filterByDateCreatedRadioButtonChange('Year')"> За последний год</label>
+    <label class="col-md-2 radio-inline"><input type="radio" name="RadioDateCreatedFilter" onchange="filterByDateCreatedRadioButtonChange('All time')"> За все время</label>
+
+    <div class="col-md-4 text-right">
+        <a asp-page="./BookReviews/Create"> + Добавить рецензию</a>
+    </div>
+</div>
+
+<div id="ReviewsListContainer">
+
+</div>
+
+
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+            refreshListOfReviews($('#searchWord').val(), $('#dateCreatedFilter').val());
+        });
+    </script>
+
+    <script>
+    function searchByTitle() {
+            var _searchWord = document.getElementById("searchWordString").value;
+            $('#searchWord').val(_searchWord);
+            refreshListOfReviews($('#searchWord').val(), $('#dateCreatedFilter').val());
+        }
+    </script>
+
+    <script>
+        function filterByDateCreatedRadioButtonChange(_dateCreatedFilter) {
+            $('#dateCreatedFilter').val(_dateCreatedFilter);
+            refreshListOfReviews($('#searchWord').val(), $('#dateCreatedFilter').val());
+        }
+    </script>
+
+    <script>
+        function refreshListOfReviews(searchWord, dateCreatedFilter) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var elementId = "ReviewsListContainer";
+                    document.getElementById(elementId).innerHTML = this.responseText;
+                }
+            };
+            var endpoint = "/BookReviews/ShortBookReviewsEntitiesList?searchWord=" +
+                searchWord +
+                "&dateCreatedFilter=" +
+                dateCreatedFilter;
+            xhttp.open("GET", endpoint, true);
+            xhttp.send();
+        }
+    </script>
+
+    <script type="text/javascript">
+        function getConfirmation(title, id) {
+            var retVal = confirm("Do you want to delete review for \"" + title + "\" with id= " + id + "?");
+
+            if (retVal == true) {
+                // ajax here
+                deleteReview(id);
+
+                var elementId = "BookReview" + id;
+
+                document.getElementById(elementId).outerHTML = "";
+                //document.write ("User wants to continue!");
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+
+    <script>
+        function deleteReview(id) {
+            var xhttp = new XMLHttpRequest();
+            var endpoint = "/BookReviews/Delete/" + id;
+            xhttp.open("POST", endpoint, true);
+            xhttp.send();
+        }
+    </script>
+
+    <script>
+        function showFullReview(id) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var elementId = "BookReview" + id;
+                    var cardContainer = document.getElementById(elementId).innerHTML = this.responseText;
+
+                    var buttonRowElementId = "BookReview" + id + "_ButtonRow";
+                    document.getElementById(buttonRowElementId).innerHTML +=
+                        "<div class=\"col-md-9 text-right\">" +
+                        "<button type=\"button\" " +
+                        "onclick=\"hideFullReview('" +
+                        id +
+                        "\')\">Скрыть рецензию</button></div>";
+                }
+            };
+            var endpoint = "/BookReviews/FullBookReviewEntity/" + id;
+            xhttp.open("GET", endpoint, true);
+            xhttp.send();
+        }
+    </script>
+
+    <script>
+        function hideFullReview(id) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var elementId = "BookReview" + id;
+                    var cardContainer = document.getElementById(elementId).innerHTML = this.responseText;
+
+                    var buttonRowElementId = "BookReview" + id + "_ButtonRow";
+                    document.getElementById(buttonRowElementId).innerHTML +=
+                        "<div class=\"col-md-9 text-right\">" +
+                        "<button type=\"button\" " +
+                        "onclick=\"showFullReview('" +
+                        id +
+                        "\')\">Показать полностью</button></div>";
+                }
+            };
+            var endpoint = "/BookReviews/ShortBookReviewEntity/" + id;
+            xhttp.open("GET", endpoint, true);
+            xhttp.send();
+        }
+    </script>
+}
 

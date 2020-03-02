@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace BooksBlogRazor.Pages.BookReviews
 {
-    public class FullBookReviewEntityModel : PageModel
+    public class ShortBookReviewEntityModel : PageModel
     {
         private readonly BooksBlogDbContext _context;
 
-        public FullBookReviewEntityModel(BooksBlogDbContext context)
+        public ShortBookReviewEntityModel(BooksBlogDbContext context)
         {
             _context = context;
         }

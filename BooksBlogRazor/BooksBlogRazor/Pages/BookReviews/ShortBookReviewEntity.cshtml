@@ -1,5 +1,5 @@
 ﻿@page "{id:int?}"
-@model BooksBlogRazor.Pages.BookReviews.FullBookReviewEntityModel
+@model BooksBlogRazor.Pages.BookReviews.ShortBookReviewEntityModel
 
 @{
     Layout = null;
@@ -33,13 +33,6 @@
                 </p>
                 <p class="card-text" style="text-align: justify">
                     @bookReviewEntity.Description
-                </p>
-           
-                <p class="card-text" style="font-size: larger">
-                    Моя рецензия:
-                </p>
-                <p class="card-text" style="text-align: justify">
-                    @bookReviewEntity.Review
                 </p>
 
                 @{ var buttonContainerId = elementId + "_ButtonRow"; }
