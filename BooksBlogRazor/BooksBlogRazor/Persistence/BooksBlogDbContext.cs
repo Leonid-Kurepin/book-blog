@@ -25,8 +25,8 @@ namespace BooksBlogRazor.Persistence
                 new BookReview()
                 {
                     BookReviewId = 1,
-                    Title = "Спасти рядового Райана",
-                    Image = "https://www.kinopoisk.ru/images/film_big/371.jpg",
+                    Title = "Цветы для Элджернона",
+                    Image = "https://knigopoisk.org/media/books/Cv/Cvety_dlja_Jeldzhernona.jpg",
                     MyRating = 5,
                     Genre = "Action",
                     Description =
@@ -42,14 +42,14 @@ namespace BooksBlogRazor.Persistence
                              "порядка, а также постоянный количественный рост и сфера нашей активности требуют от нас анализа систем" +
                              " массового участия.",
 
-                    ReviewDateCreated = DateTime.Today.AddMonths(-1)
+                    ReviewDateCreated = DateTime.Today
                 },
 
                 new BookReview()
                 {
                     BookReviewId = 2,
-                    Title = "Сумерки",
-                    Image = "https://www.kinopoisk.ru/images/film_big/401177.jpg",
+                    Title = "Дракула",
+                    Image = "https://knigopoisk.org/media/books/Br/Brem_Stoker__Drakula.jpg",
                     MyRating = 3,
                     Genre = "Drama",
                     Description =
@@ -67,14 +67,14 @@ namespace BooksBlogRazor.Persistence
                              "порядка, а также постоянный количественный рост и сфера нашей активности требуют от нас анализа систем" +
                              " массового участия.",
 
-                    ReviewDateCreated = DateTime.Today.AddDays(-1),
+                    ReviewDateCreated = DateTime.Today.AddDays(-10),
                 },
 
                 new BookReview()
                 {
                     BookReviewId = 3,
-                    Title = "Железный Человек",
-                    Image = "https://www.kinopoisk.ru/images/film_big/61237.jpg",
+                    Title = "Гулливер",
+                    Image = "https://knigopoisk.org/media/books/pu/puteshestviya-gullivera--95393.jpg",
                     MyRating = 4,
                     Genre = "Action",
                     Description =
@@ -93,14 +93,14 @@ namespace BooksBlogRazor.Persistence
                              "порядка, а также постоянный количественный рост и сфера нашей активности требуют от нас анализа систем" +
                              " массового участия.",
 
-                    ReviewDateCreated = DateTime.Today
+                    ReviewDateCreated = DateTime.Today.AddDays(-25)
                 },
 
                  new BookReview()
                  {
                      BookReviewId = 4,
-                     Title = "Большой куш",
-                     Image = "https://www.kinopoisk.ru/images/film_big/526.jpg",
+                     Title = "40 дней",
+                     Image = "https://knigopoisk.org/media/books/po/poster.png",
                      MyRating = 5,
                      Genre = "Criminal",
                      Description =
@@ -116,14 +116,83 @@ namespace BooksBlogRazor.Persistence
                              "порядка, а также постоянный количественный рост и сфера нашей активности требуют от нас анализа систем" +
                              " массового участия.",
 
-                     ReviewDateCreated = DateTime.Today
+                     ReviewDateCreated = DateTime.Today.AddDays(-40)
                  },
 
                 new BookReview()
                 {
                     BookReviewId = 5,
-                    Title = "Очень страшное кино",
-                    Image = "https://www.kinopoisk.ru/images/film_big/5932.jpg",
+                    Title = "4 месяца",
+                    Image = "https://knigopoisk.org/media/books/po/poster.png",
+                    MyRating = 5,
+                    Genre = "Criminal",
+                    Description =
+                        "Четырехпалый Френки должен был переправить краденый алмаз из Англии в США своему боссу Эви. " +
+                        "Но вместо этого герой попадает в эпицентр больших неприятностей.Сделав ставку на подпольном " +
+                        "боксерском поединке,Френки попадает в круговорот весьма нежелательных событий.",
+                    Review = "My review here" +
+                             "Не следует, однако забывать, что консультация с широким активом позволяет оценить значение позиций," +
+                             " занимаемых участниками в отношении поставленных задач. Значимость этих проблем настолько очевидна," +
+                             " что консультация с широким активом обеспечивает широкому кругу (специалистов) участие в формировании" +
+                             " направлений прогрессивного развития. С другой стороны укрепление и развитие структуры требуют от нас" +
+                             " анализа системы обучения кадров, соответствует насущным потребностям. Идейные соображения высшего " +
+                             "порядка, а также постоянный количественный рост и сфера нашей активности требуют от нас анализа систем" +
+                             " массового участия.",
+
+                    ReviewDateCreated = DateTime.Today.AddMonths(-4)
+                },
+
+                new BookReview()
+                {
+                    BookReviewId = 6,
+                    Title = "10 месяцев",
+                    Image = "https://knigopoisk.org/media/books/po/poster.png",
+                    MyRating = 5,
+                    Genre = "Criminal",
+                    Description =
+                        "Четырехпалый Френки должен был переправить краденый алмаз из Англии в США своему боссу Эви. " +
+                        "Но вместо этого герой попадает в эпицентр больших неприятностей.Сделав ставку на подпольном " +
+                        "боксерском поединке,Френки попадает в круговорот весьма нежелательных событий.",
+                    Review = "My review here" +
+                             "Не следует, однако забывать, что консультация с широким активом позволяет оценить значение позиций," +
+                             " занимаемых участниками в отношении поставленных задач. Значимость этих проблем настолько очевидна," +
+                             " что консультация с широким активом обеспечивает широкому кругу (специалистов) участие в формировании" +
+                             " направлений прогрессивного развития. С другой стороны укрепление и развитие структуры требуют от нас" +
+                             " анализа системы обучения кадров, соответствует насущным потребностям. Идейные соображения высшего " +
+                             "порядка, а также постоянный количественный рост и сфера нашей активности требуют от нас анализа систем" +
+                             " массового участия.",
+
+                    ReviewDateCreated = DateTime.Today.AddMonths(-10)
+                },
+
+                new BookReview()
+                {
+                    BookReviewId = 7,
+                    Title = "14 месяцев",
+                    Image = "https://knigopoisk.org/media/books/po/poster.png",
+                    MyRating = 5,
+                    Genre = "Criminal",
+                    Description =
+                        "Четырехпалый Френки должен был переправить краденый алмаз из Англии в США своему боссу Эви. " +
+                        "Но вместо этого герой попадает в эпицентр больших неприятностей.Сделав ставку на подпольном " +
+                        "боксерском поединке,Френки попадает в круговорот весьма нежелательных событий.",
+                    Review = "My review here" +
+                             "Не следует, однако забывать, что консультация с широким активом позволяет оценить значение позиций," +
+                             " занимаемых участниками в отношении поставленных задач. Значимость этих проблем настолько очевидна," +
+                             " что консультация с широким активом обеспечивает широкому кругу (специалистов) участие в формировании" +
+                             " направлений прогрессивного развития. С другой стороны укрепление и развитие структуры требуют от нас" +
+                             " анализа системы обучения кадров, соответствует насущным потребностям. Идейные соображения высшего " +
+                             "порядка, а также постоянный количественный рост и сфера нашей активности требуют от нас анализа систем" +
+                             " массового участия.",
+
+                    ReviewDateCreated = DateTime.Today.AddMonths(-14)
+                },
+
+                new BookReview()
+                {
+                    BookReviewId = 8,
+                    Title = "2 ГОДА назад",
+                    Image = "https://knigopoisk.org/media/books/go/golodnye-igry--20522.jpg",
                     MyRating = 2,
                     Genre = "Comedy",
                     Description =
@@ -140,7 +209,7 @@ namespace BooksBlogRazor.Persistence
                              "порядка, а также постоянный количественный рост и сфера нашей активности требуют от нас анализа систем" +
                              " массового участия.",
 
-                    ReviewDateCreated = DateTime.Today
+                    ReviewDateCreated = DateTime.Today.AddYears(-2)
                 }
             );
 
