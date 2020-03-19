@@ -12,13 +12,14 @@
 @Html.Hidden("dateCreatedFilter", "Month")
 @Html.Hidden("searchWord", "")
 
-<div class="row" style="padding: 0 20px 20px 20px">
-    <div class="col-md-2" style="visibility: hidden">
+<div class="row" style="padding: 1rem">
+    <div class="col-md-2">
         Поиск по названию:
     </div>
-
-    <input type="text" name="enter" class="enter" value="" id="searchWordString" />
-    <button  onclick="searchByTitle()">Поиск</button>
+    <div class="col-md-8">
+        <input type="text" name="enter" class="enter" value="" id="searchWordString" />
+        <button onclick="searchByTitle()">Поиск</button>
+    </div>
 </div>
 
 <div class="row" style="padding: 20px 20px 10px 20px">
