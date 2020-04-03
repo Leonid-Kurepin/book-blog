@@ -1,0 +1,56 @@
+﻿@page
+@model BooksBlogRazor.Pages.BookReviews.CreateModel
+
+@{
+    ViewData["Title"] = "Добавление рецензии";
+}
+
+<h1>Создание рецензии на книгу</h1>
+
+<hr />
+<form method="post" class="col-md-12">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">Название книги</label>
+            <input asp-for="BookReview.Title" class="form-control" />
+            <span asp-validation-for="BookReview.Title" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">Изображение (ссылка): </label>
+            <input asp-for="BookReview.Image" class="form-control" />
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="control-label">Моя оценка</label>
+            <input asp-for="BookReview.MyRating" class="form-control" />
+            <span asp-validation-for="BookReview.MyRating" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <div>Описание книги</div>
+            <textarea asp-for="BookReview.Description" class="form-control"></textarea>
+            <span asp-validation-for="BookReview.Description" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div>Моя рецензия</div>
+        <textarea asp-for="BookReview.Review" class="form-control"></textarea>
+        <span asp-validation-for="BookReview.Review" class="text-danger"></span>
+    </div>
+
+    <div class="form-group col-md-6 text-right" style="padding: 15px 15px 0 0">
+        <input type="submit" value="Добавить рецензию" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

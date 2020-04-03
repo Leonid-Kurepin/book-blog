@@ -1,0 +1,59 @@
+﻿@page "{id:int?}"
+@model BooksBlogRazor.Pages.BookReviews.FullBookReviewEntityModel
+
+@{
+    Layout = null;
+}
+
+@{
+    var bookReviewEntity = Model.BookReviewEntity;
+
+    var elementId = "BookReview" + bookReviewEntity.BookReviewId;
+
+    <div class="row no-gutters">
+        <div class="col-md-2">
+            <img src="@bookReviewEntity.Image" width="100%">
+        </div>
+        <div class="col-md-10">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5 class="card-title">@bookReviewEntity.Title</h5>
+                    </div>
+                    <div class="col-md-9 text-right">
+                        <a href="javascript:void(0);" onclick="getConfirmation('@bookReviewEntity.Title', '@bookReviewEntity.BookReviewId')">Удалить</a>
+                    </div>
+                </div>
+
+                <p class="card-text">
+                    MyRating: @bookReviewEntity.MyRating
+                </p>
+                <p class="card-text" style="font-size: larger">
+                    Описание:
+                </p>
+                <p class="card-text" style="text-align: justify">
+                    @bookReviewEntity.Description
+                </p>
+           
+                <p class="card-text" style="font-size: larger">
+                    Моя рецензия:
+                </p>
+                <p class="card-text" style="text-align: justify">
+                    @bookReviewEntity.Review
+                </p>
+
+                @{ var buttonContainerId = elementId + "_ButtonRow"; }
+
+                <div id="@buttonContainerId" class="row">
+                    <div class="col-md-3">
+                        <p class="card-text">
+                            <small class="text-muted">
+                                Рецензия добавлена @bookReviewEntity.ReviewDateCreated.Value.ToString("dd-MM-yyyy")
+                            </small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
